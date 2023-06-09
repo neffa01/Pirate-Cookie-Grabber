@@ -1,4 +1,4 @@
-# ꜱᴏᴍᴇᴛʜɪɴɢ's Cookie Grabber | ꜱᴏᴍᴇᴛʜɪɴɢ23#5146
+# ꜱᴏᴍᴇᴛʜɪɴɢ's Cookie Grabber | ꜱᴏᴍᴇᴛʜɪɴɢ#0001
 
 **Discord: https://discord.gg/8J6n4ZrGTF**
 
