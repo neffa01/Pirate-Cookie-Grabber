@@ -1,4 +1,4 @@
-webhook = "https://discord.com/api/webhooks/1116941656613208095/EFa_ORS47I3LVejlA-1u01fEjrp0hRYh1CAGDdANiJBoZdL-9gOWh-bG85-DN36Im-dW"
+webhook = ""
 
 try:
     import robloxpy
